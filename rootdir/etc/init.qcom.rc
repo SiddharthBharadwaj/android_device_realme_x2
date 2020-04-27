@@ -61,6 +61,10 @@ on boot
     # OTG
     write /sys/class/power_supply/usb/otg_switch 1
 
+    # Smart Charging
+    chown system system sys/class/power_supply/battery/input_suspend
+    chmod 666 sys/class/power_supply/battery/input_suspend
+
 on post-fs-data
     #Hack until we build the vendor
     mount none /dev/null vendor/lib/hw/lights.sm6150.so bind
